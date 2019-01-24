@@ -5,7 +5,7 @@
   "main": "bundle/index.js",
   "scripts": {
     "test": "jest",
-    "build": "parcel build src/index.js --target=node"
+    "build": "parcel build src/index.ts --target=node"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
     "jest": "^23.6.0",
     "parcel-bundler": "^1.11.0",
     "typescript": "^3.2.4"
+  },
+  "dependencies": {
+    "ssb-client": "^4.6.1"
   }
 }
