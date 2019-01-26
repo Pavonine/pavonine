@@ -1,20 +1,58 @@
-import { PAVONINE_ADD_ITEM, PAVONINE_ACTION } from "./types";
+import {
+  PAVONINE_ACTION,
+  PAVONINE_ADD_TASK,
+  PAVONINE_EDIT_TASK,
+  PAVONINE_REMOVE_TASK
+} from "./types";
 
 export interface ITask {
   text: string;
   isCompleted: boolean;
 }
 
+/**
+ * @description Structure of the Pavonine action
+ * @export
+ * @interface IPavonineAction
+ */
 export interface IPavonineAction {
   type: PAVONINE_ACTION;
   payload: any;
 }
 
+/**
+ * @description Structure of Action published to create a new message / action.
+ * @export
+ * @interface IPavonineActionAddTask
+ * @extends {IPavonineAction}
+ */
 export interface IPavonineActionAddTask extends IPavonineAction {
-  actionType: PAVONINE_ADD_ITEM;
+  actionType: PAVONINE_ADD_TASK;
   payload: ITask;
 }
 
+/**
+ * @description Structure of Action published to edit a previous message / action.
+ * @export
+ * @interface IPavonineActionEditTask
+ * @extends {IPavonineAction}
+ */
+export interface IPavonineActionEditTask extends IPavonineAction {
+  actionType: PAVONINE_EDIT_TASK;
+  origin: string;
+  payload: ITask;
+}
+
+export interface IPavonineActionRemoveTask extends IPavonineAction {
+  actionType: PAVONINE_REMOVE_TASK;
+  origin: string;
+}
+
+/**
+ * @description Structure of the action message in SSB database once IPavonineAction is published.
+ * @export
+ * @interface IPavonineMessage
+ */
 export interface IPavonineMessage {
   key: string;
   value: {
@@ -29,6 +67,12 @@ export interface IPavonineMessage {
   timestamp: number;
 }
 
+/**
+ * @description Structure of the action message in SSB database once IPavonineActionAddTask is published
+ * @export
+ * @interface IPavonineAddTaskMessage
+ * @extends {IPavonineMessage}
+ */
 export interface IPavonineAddTaskMessage extends IPavonineMessage {
   value: {
     previous: string;
@@ -41,10 +85,32 @@ export interface IPavonineAddTaskMessage extends IPavonineMessage {
   };
 }
 
+/**
+ * @description Structure of the action message in SSB database once IPavonineActionEditTask is published
+ * @export
+ * @interface IPavonineEditTaskMessage
+ * @extends {IPavonineMessage}
+ */
+export interface IPavonineEditTaskMessage extends IPavonineMessage {
+  value: {
+    previous: string;
+    sequence: number;
+    author: string;
+    timestamp: number;
+    hash: string;
+    content: IPavonineActionEditTask;
+    signature: string;
+  };
+}
+
+/**
+ * @description Structure of pavonine core.
+ * @export
+ * @interface IPavonine
+ */
 export interface IPavonine {
-  connection: boolean;
+  (sbot: any): void;
   sbot: any; // sbot type defs
   emitAction(type: string, payload: any): IPavonineMessage;
   addTask(task: ITask): IPavonineAddTaskMessage;
-  connect(): object; // We dont know the type defs for sbot :/
 }
