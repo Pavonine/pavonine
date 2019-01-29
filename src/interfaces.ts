@@ -122,8 +122,7 @@ export interface IPavonineMessageRemoveTask extends IPavonineMessage {
  */
 export interface IPavonine {
   sbot: any; // sbot type defs
-  emitAction(type: string, payload: any): IPavonineMessage;
-  addTask(task: ITask): IPavonineMessageAddTask;
+  addTask(task: ITask): Promise<IPavonineMessageAddTask>;
   editTask(task: ITask): IPavonineMessageEditTask;
   removeTask(task: ITask): IPavonineMessageRemoveTask;
 }

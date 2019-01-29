@@ -1,0 +1,4 @@
+export const PAVONINE_ADD_TASK = "ADD_TASK";
+export const PAVONINE_ACTION = "PAVONINE_ACTION";
+export const PAVONINE_EDIT_TASK = "EDIT_TASK";
+export const PAVONINE_REMOVE_TASK = "REMOVE_TASK";

@@ -1,11 +1,15 @@
 import {
-  IPavonine,
-  IPavonineMessage,
   ITask,
+  IPavonine,
+  IPavonineAction,
+  IPavonineMessage,
   IPavonineMessageAddTask,
   IPavonineMessageEditTask,
-  IPavonineMessageRemoveTask
+  IPavonineMessageRemoveTask,
+  IPavonineActionAddTask
 } from "./interfaces";
+
+import { PAVONINE_ADD_TASK, PAVONINE_ACTION } from "./actions";
 
 class Pavonine implements IPavonine {
   sbot: any = null;
@@ -13,12 +17,23 @@ class Pavonine implements IPavonine {
     this.sbot = sbot;
   }
 
-  emitAction(type: string, payload: any): IPavonineMessage {
-    return null;
-  }
+  addTask(task: ITask): Promise<IPavonineMessageAddTask> {
+    const action: IPavonineActionAddTask = {
+      actionType: PAVONINE_ADD_TASK,
+      type: PAVONINE_ACTION,
+      payload: task
+    };
 
-  addTask(task: ITask): IPavonineMessageAddTask {
-    return null;
+    return new Promise((resolve, reject) => {
+      this.sbot.publish(action, (err: Error, msg: IPavonineMessageAddTask) => {
+        if (err)
+          reject({
+            err,
+            text: "Error publishing message"
+          });
+        resolve(msg);
+      });
+    });
   }
 
   editTask(task: ITask): IPavonineMessageEditTask {

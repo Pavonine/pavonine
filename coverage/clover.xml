@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1548777023090" clover="3.2.0">
-  <project timestamp="1548777023090" name="All files">
-    <metrics statements="13" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1" elements="19" coveredelements="8" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1">
+<coverage generated="1548781393660" clover="3.2.0">
+  <project timestamp="1548781393660" name="All files">
+    <metrics statements="21" coveredstatements="11" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="1" elements="30" coveredelements="12" complexity="0" loc="21" ncloc="21" packages="1" files="2" classes="2">
+      <file name="actions.ts" path="/home/flowerypastels/Projects/pavonine/src/actions.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
       <file name="index.ts" path="/home/flowerypastels/Projects/pavonine/src/index.ts">
-        <metrics statements="13" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <metrics statements="17" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
       </file>
     </metrics>
   </project>
