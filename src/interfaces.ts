@@ -70,10 +70,10 @@ export interface IPavonineMessage {
 /**
  * @description Structure of the action message in SSB database once IPavonineActionAddTask is published
  * @export
- * @interface IPavonineAddTaskMessage
+ * @interface IPavonineMessageAddTask
  * @extends {IPavonineMessage}
  */
-export interface IPavonineAddTaskMessage extends IPavonineMessage {
+export interface IPavonineMessageAddTask extends IPavonineMessage {
   value: {
     previous: string;
     sequence: number;
@@ -88,10 +88,10 @@ export interface IPavonineAddTaskMessage extends IPavonineMessage {
 /**
  * @description Structure of the action message in SSB database once IPavonineActionEditTask is published
  * @export
- * @interface IPavonineEditTaskMessage
+ * @interface IPavonineMessageEditTask
  * @extends {IPavonineMessage}
  */
-export interface IPavonineEditTaskMessage extends IPavonineMessage {
+export interface IPavonineMessageEditTask extends IPavonineMessage {
   value: {
     previous: string;
     sequence: number;
@@ -103,14 +103,27 @@ export interface IPavonineEditTaskMessage extends IPavonineMessage {
   };
 }
 
+export interface IPavonineMessageRemoveTask extends IPavonineMessage {
+  value: {
+    previous: string;
+    sequence: number;
+    author: string;
+    timestamp: number;
+    hash: string;
+    content: IPavonineActionRemoveTask;
+    signature: string;
+  };
+}
+
 /**
  * @description Structure of pavonine core.
  * @export
  * @interface IPavonine
  */
 export interface IPavonine {
-  (sbot: any): void;
   sbot: any; // sbot type defs
   emitAction(type: string, payload: any): IPavonineMessage;
-  addTask(task: ITask): IPavonineAddTaskMessage;
+  addTask(task: ITask): IPavonineMessageAddTask;
+  editTask(task: ITask): IPavonineMessageEditTask;
+  removeTask(task: ITask): IPavonineMessageRemoveTask;
 }

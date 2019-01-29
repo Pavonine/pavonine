@@ -1,24 +1,33 @@
-import ssbClient from "ssb-client";
+import {
+  IPavonine,
+  IPavonineMessage,
+  ITask,
+  IPavonineMessageAddTask,
+  IPavonineMessageEditTask,
+  IPavonineMessageRemoveTask
+} from "./interfaces";
 
-ssbClient(function(err, sbot) {
-  if (err) throw err;
+class Pavonine implements IPavonine {
+  sbot: any = null;
+  constructor(sbot: any) {
+    this.sbot = sbot;
+  }
 
-  sbot.publish(
-    {
-      type: "PAVONINE_TASK",
-      actionType: "PAVONINE_ADD_TASK",
-      payload: {
-        text: "hello world",
-        isCompleted: false
-      }
-    },
-    (err, msg) => {
-      if (err) throw err;
-      console.log(JSON.stringify(msg));
-    }
-  );
+  emitAction(type: string, payload: any): IPavonineMessage {
+    return null;
+  }
 
-  sbot.close();
-});
+  addTask(task: ITask): IPavonineMessageAddTask {
+    return null;
+  }
 
-export default "1";
+  editTask(task: ITask): IPavonineMessageEditTask {
+    return null;
+  }
+
+  removeTask(task: ITask): IPavonineMessageRemoveTask {
+    return null;
+  }
+}
+
+export default Pavonine;
